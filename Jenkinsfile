@@ -15,6 +15,7 @@ pipeline{
                     sh 'ssh -o StrictHostKeyChecking=no ubuntu@ec2-34-236-23-5.compute-1.amazonaws.com uptime'
                     sh 'ssh -v ubuntu@ec2-34-236-23-5.compute-1.amazonaws.com'
                     sh 'scp -r /var/lib/jenkins/workspace/Demo ubuntu@ec2-34-236-23-5.compute-1.amazonaws.com:/home/ubuntu/projects'
+                    sh 'chmod -R 777 ubuntu@ec2-34-236-23-5.compute-1.amazonaws.com:/home/ubuntu/projects/Demo/*'
                 }
             }
         }
