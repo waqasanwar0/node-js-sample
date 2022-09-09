@@ -7,7 +7,6 @@ pipeline{
                 checkout([$class: 'GitSCM', branches: [[name: '*/master']], extensions: [], userRemoteConfigs: [[url: 'https://github.com/waqasanwar0/node-js-sample.git']]])
                 sh 'npm install'
                 sh 'ls'
-                sh 'chmod -R 777 ./*'
             }
         }
     stage('Deploy to aws ec2'){
