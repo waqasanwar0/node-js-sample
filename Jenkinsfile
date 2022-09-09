@@ -7,6 +7,7 @@ pipeline{
                 checkout([$class: 'GitSCM', branches: [[name: '*/master']], extensions: [], userRemoteConfigs: [[url: 'https://github.com/waqasanwar0/node-js-sample.git']]])
                 sh 'npm install'
                 sh 'ls'
+                sh 'chmod -R 777 ./*'
             }
         }
     stage('Deploy to aws ec2'){
@@ -14,7 +15,6 @@ pipeline{
                 sshagent(credentials :['34.236.23.5']){
                     sh 'ssh -o StrictHostKeyChecking=no ubuntu@ec2-34-236-23-5.compute-1.amazonaws.com uptime'
                     sh 'ssh -v ubuntu@ec2-34-236-23-5.compute-1.amazonaws.com'
-                    sh 'chmod -R 777 ubuntu@ec2-34-236-23-5.compute-1.amazonaws.com:/home/ubuntu/projects/Demo'
                     sh 'scp -r /var/lib/jenkins/workspace/Demo ubuntu@ec2-34-236-23-5.compute-1.amazonaws.com:/home/ubuntu/projects'
                 }
             }
