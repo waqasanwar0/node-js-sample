@@ -1,5 +1,6 @@
 pipeline{
-    agent any    
+    agent any
+    tools {nodejs "Node 18.8"}  
     stages {
         stage('source'){
             steps{
