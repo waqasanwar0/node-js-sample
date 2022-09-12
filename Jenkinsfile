@@ -14,7 +14,7 @@ pipeline{
                 sshagent(credentials :['34.236.23.5']){
                     sh 'ssh -o StrictHostKeyChecking=no ubuntu@ec2-34-236-23-5.compute-1.amazonaws.com uptime'
                     sh 'ssh -v ubuntu@ec2-34-236-23-5.compute-1.amazonaws.com'
-                    sh 'rm -rf -o StrictHostKeyChecking=no ubuntu@ec2-34-236-23-5.compute-1.amazonaws.com:~/projects/Demo/*'
+                    sh 'chmod +777 /var/lib/jenkins/workspace/Demo'
                     sh 'scp -r -o StrictHostKeyChecking=no /var/lib/jenkins/workspace/Demo ubuntu@ec2-34-236-23-5.compute-1.amazonaws.com:~/projects'
                 }
             }
